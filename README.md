@@ -1,80 +1,80 @@
-🌊 Flood Social Media Sentiment Analysis Dashboard
+## 🌊 Flood Social Media Sentiment Analysis Dashboard
+A Streamlit + NLP Project for Real-Time Public Sentiment Monitoring During Floods
+📌 Overview
 
-A Streamlit + NLP Project for Analyzing Public Sentiment During Flood Situations
+This project provides an interactive, real-time sentiment analysis dashboard for analyzing public emotions during flood situations using social media data.
+It combines NLP, data visualization, and Streamlit UI to generate insights into how people react, respond, and communicate during flood emergencies.
 
-📌 Project Overview
+The application automatically processes a dataset named flood_social_data.csv and visualizes sentiment, trends, locations, and more through a multi-tab dashboard.
 
-This project provides an interactive, real-time sentiment analysis dashboard for flood-related social media data.
-It uses:
+## 🧠 Tech Stack
 
-TextBlob for sentiment polarity & subjectivity
+NLP: TextBlob
 
-Streamlit for UI and live visualization
+Frontend/UI: Streamlit
 
-Plotly for advanced interactive charts
+Visualization: Plotly, Matplotlib, Seaborn
 
-Pandas/NumPy for data processing
+Data Processing: Pandas, NumPy
 
-Regex cleaning for preprocessing text
+Preprocessing: Regex
 
-The application automatically loads a dataset named flood_social_data.csv and generates a fully interactive dashboard with multiple analysis tabs.
+## 🎯 Key Features
+🔹 1. Automated Data Loading & Text Cleaning
 
-🎯 Key Features
+✔ Loads flood_social_data.csv on startup
+✔ Removes unwanted/blank columns
+✔ Cleans:
 
-🔹 1. Automatic Data Loading & Cleaning
+URLs
+Hashtags
+Mentions
+Emojis
 
-Loads flood_social_data.csv automatically
-
-Removes blank columns
-
-Cleans URLs, hashtags, mentions, and punctuation
-
-Handles missing values
+Punctuation
+✔ Handles missing values
+✔ Creates derived columns (length, polarity, subjectivity, classification)
 
 🔹 2. Advanced Sentiment Analysis
 
-Custom TextBlob-based classifier:
+Uses TextBlob polarity + subjectivity to classify tweets into five categories:
 
-Positive
+## Polarity Range	Label
 
-Slightly Positive
+polarity > 0.20	Positive
+0.05 < polarity ≤ 0.20	Slightly Positive
+−0.05 ≤ polarity ≤ 0.05	Neutral
+−0.20 ≤ polarity < −0.05	Slightly Negative
+polarity < −0.20	Negative
 
-Neutral
+## ⚠ Additional rule:
+If subjectivity < 0.10, the post is automatically marked as Neutral.
 
-Slightly Negative
+🔹 3. Fully Interactive Streamlit Dashboard
 
-Negative
+The UI contains multiple analysis tabs:
 
-Outputs include:
-
-Polarity (−1 to 1)
-
-Subjectivity
-
-Cleaned sentiment label
-
-🔹 3. Interactive Dashboard Tabs
-Tab	Description
+## Tab	Description
 📊 Overview	Dataset info, missing values, content length distribution
-📈 Sentiment Analysis	Pie chart, scatter plot, sentiment stats
-🌍 Geographical	Location-wise polarity & counts
-📱 Source	Source platform analysis
-📅 Temporal	Time-based trends (daily sentiment, frequency)
-🔍 Data Explorer	Filter posts by sentiment and explore content
+📈 Sentiment Analysis	Pie charts, scatter plots, sentiment stats
+🌍 Geographical Insights	Location-wise polarity maps & bar charts
+📱 Source-Based Trends	Platform-wise activity (Twitter, FB, etc.)
+📅 Temporal Analysis	Daily trends, sentiment over time
+🔍 Data Explorer	Filter posts by sentiment & inspect raw text
 📁 Folder Structure
 📦 flood-sentiment-analysis
 │
 ├── app.py                      # Main Streamlit application
-├── flood_social_data.csv       # Input social media dataset
+├── flood_social_data.csv       # Input dataset
 ├── README.md                   # Project documentation
 └── requirements.txt            # Python dependencies
 
-🛠 Installation & Setup
-1. Clone the Repository
+## 🛠 Installation & Setup
+1️⃣ Clone the Repository
 git clone https://github.com/yourusername/flood-sentiment-analysis.git
 cd flood-sentiment-analysis
 
-2. Install Required Packages
+2️⃣ Install Dependencies
 
 Create requirements.txt with:
 
@@ -88,55 +88,52 @@ matplotlib
 seaborn
 
 
-Install dependencies:
+## Install packages:
 
 pip install -r requirements.txt
 python -m textblob.download_corpora
 
-3. Add Your Dataset
+3️⃣ Add Your Dataset
 
-Place flood_social_data.csv in the project folder.
+Place your CSV file as:
 
-4. Run the Streamlit App
+flood_social_data.csv
+
+4️⃣ Run the Application
 streamlit run app.py
 
-📊 Dataset Requirements
-
-The CSV must have at least:
-
+## 📊 Dataset Requirements
 Column	Description
-content	Social media text
-date or time (optional)	For temporal trends
+content	Text of social media post
+date or time (optional)	For temporal analysis
 userLocation (optional)	For geographical analysis
-source (optional)	Platform (Twitter, FB, etc.)
+source (optional)	Platform name (Twitter, Facebook, etc.)
+
+
 🧪 Sentiment Classification Logic
-Criteria	Label
-polarity > 0.20	Positive
-0.05 < polarity ≤ 0.20	Slightly Positive
-−0.05 ≤ polarity ≤ 0.05	Neutral
-−0.20 ≤ polarity < −0.05	Slightly Negative
-polarity < −0.20	Negative
+polarity > 0.20                → Positive  
+0.05 < polarity ≤ 0.20         → Slightly Positive  
+−0.05 ≤ polarity ≤ 0.05        → Neutral  
+−0.20 ≤ polarity < −0.05       → Slightly Negative  
+polarity < −0.20               → Negative  
 
-Subjectivity < 0.1 is always marked as neutral. 
+subjectivity < 0.10            → Neutral (override rule)
 
-📥 Export Feature
+## 📥 Export Feature
 
-You can download a fully processed CSV:
+The dashboard allows exporting a fully processed dataset:
 
 flood_sentiment_analysis.csv
 
 🚀 Deployment Options
+✔ Streamlit Cloud (Recommended)
 
-You can deploy this project on:
-
-✔ Streamlit Cloud
-
-Just push repo → click “Deploy”
-Supports autoscaling and public sharing.
+Push repo → Deploy → Share public link
+Fully serverless & auto-scaling.
 
 ✔ HuggingFace Spaces
 
-Add:
+Create README.md with:
 
 title: Flood Sentiment Analysis
 emoji: 🌊
@@ -145,19 +142,20 @@ sdk_version: 1.26.0
 
 ✔ Local Deployment
 
-Works on any OS with Python installed.
+Runs on Windows, macOS, and Linux.
 
-🤝 Contributing
+## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
-Feel free to fork this project and submit a pull request.
+Feel free to fork the repo and submit a pull request.
 
-📜 License
+## 📜 License
 
 This project is licensed under the MIT License.
 
-🔗 Live Project
-
+## 🔗 Live Project
 🚀 Live Dashboard:
+👉 https://flood-analysis-wzhbjuvcdhjrlwxerhfjam.streamlit.app/
 
-Link:https://flood-analysis-wzhbjuvcdhjrlwxerhfjam.streamlit.app/
+## AKSHAT KAPOOR
+## (AI ENGINEER)
